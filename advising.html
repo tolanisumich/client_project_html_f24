@@ -11,13 +11,13 @@
 <body>
     <a href = "#main" class="skip_link">Skip to Main Content</a>
     <header>
-        <img src="images/UMSI_logo.jpg"  alt="UMSI Logo">
+        <img src="images/UMSI_logo.jpg" id="topImage" alt="UMSI Logo">
         <nav>
             <div id="menubar">
                 <table class="tables">
                     <tbody>
                         <tr>
-                            <td><a href="index.html">Home</a></td>
+                            <td><a href="index.html"  id="homeButton">Home</a></td>
                             <td id="current_page"><a href="advising.html">MSI Academic Advising Resource Site</a></td>
                             <td><a href="tutoring.html">UMSI Tutoring & Academic Support</a></td>
                             <td><a href="services.html">MSI Student Support Services</a></td>
@@ -83,10 +83,61 @@
             <img src="images/UMAdvising_schedule.png" class="images" alt="Advising calendar September"></a>
 
     </div>
-        </main>
+    <div id="check">
+        <label>
+          <input type="checkbox" name="subscribe" id="subscribe" onclick = showForm(this)>
+          Check to Email an Advisor
+        </label>
+      </div>
+      <div id="formDiv" style="display:none;">
+
+        <form action="https://formspree.io/f/xbljyllw" method="POST">
+            <fieldset>
+                <legend>Email the Advisors</legend>
+
+                <label for="first-name_id">First Name:</label>
+                <input type="text" placeholder="Jane" name="first-name" id="first-name_id"  required>
+
+                <label for="last-name_id">Last Name:</label>
+                <input type="text" placeholder="Smith" name="last-name" id="last-name_id" required>
+
+                <label for="program_id">Program: </label>
+                <input type="text"  placeholder="MSI - UX" name="program" id="program_id">
+
+                <label for="email_id">Email: </label>
+                <input type="email"  placeholder="jane@umich.edu" name="email" id="email_id" required>
+                <div class="message-class">
+
+                <label for="subject_id">Subject:</label>
+                <input type="text" placeholder="Subject Line"id="subject_id" name="subject" required>
+
+                <label for="message_id">Message:</label>
+                <textarea name="message"  id="message_id" placeholder="type message here" required></textarea>
+                </div>
+
+                <input type="submit" value="Submit">
+            </fieldset>
+        </form>
+</div>
+    <script>
+ function showForm(checkbox) {
+    console.log("this works")
+
+    if (document.getElementById('subscribe').checked == true) {
+     document.querySelector('#formDiv').style.display = "block";
+    }
+    else {
+      document.querySelector('#formDiv').style.display = "none";
+    }
+  }
+//   document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    </main>
     <footer class="footer_section">
 
         <p>UMSI Academic Advising | <a href=" umsi.advising.msi@umich.edu"> umsi.advising.msi@umich.edu</a> </p>
+        <!-- <p> &copy; <span id="year"></span> Tolani Smith</p> -->
+        <p> Created by Tolani Smith</p>
 
     </footer>
 
